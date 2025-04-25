@@ -99,10 +99,6 @@ body {
     letter-spacing: 1px;
 }
 
-#modal-container {
-
-}
-
 #modal {
     border-radius: 10px;
     width: 350px;
@@ -173,8 +169,4 @@ body {
 
 .inactive {
     z-index: -1;
-}
-
-.winners {
-    text-decoration: line-through;
 }
