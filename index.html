@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <title>Tic-Tac-Toe</title>
+</head>
+<body>
+        <div id="turnContainer">
+            <p id="turnContainer-p">Turn: </p>
+        </div>
+        
+        <div id="allContainer">
+            <div class="one"></div>
+            <div class="two"></div>
+            <div class="three"></div>
+            <div class="four"></div>
+            <div class="five"></div>
+            <div class="six"></div>
+            <div class="seven"></div>
+            <div class="eight"></div>
+            <div class="nine"></div>
+        </div>
+    
+        <div id="buttonContainer">
+            <button id="startButton" onclick="StartGame()">START</button>
+        </div>
+ 
+<div id="modal-container"> 
+    <div id="modal">
+        <div id="modal-inner">
+            <p align="center" id="choose">Choose the first player</p>
+            <div id="X-O-Container">
+                <p id="x">X</p>
+                <p id="o">O</p>
+            </div>       
+        </div>
+    </div>
+</div>
+
+    
+</body>
+</html>
+<script src="app.js"></script>
