@@ -3,7 +3,6 @@ const modalPopUp = document.getElementById("modal");
 const turnContainer = document.getElementById("turnContainer");
 const allBlocks = document.querySelectorAll("#allContainer div");
 let choose = 0;
-let blockClickHandlers = [];
 
 const chooseFirstPlayer = () => {
     showModal();
@@ -34,6 +33,14 @@ const setXandO = () => {
     })
 };
 
+const updateDraw = () => {
+    const turnContainerText = document.getElementById("turnContainer-p");
+    const turnContainerText2 = document.getElementById("turnContainer-p2");
+
+    turnContainerText2.remove()
+    turnContainerText.innerText = "Draw";
+}
+
 const updateWinner = () => {
     const turnContainerText = document.getElementById("turnContainer-p");
     const turnContainerText2 = document.getElementById("turnContainer-p2");
@@ -49,17 +56,26 @@ const restart = () => {
     startButton.onclick = () => location.reload();
 }
 
+
 const EndGame = (typeWin) => {
     allBlocks.forEach((block, idx) => {
         block.classList.add("inactive");
     })
-    updateWinner();
-    restart();
-    
 
+    if (typeWin == 9) {
+        updateDraw();
+    }
+
+    else {
+        updateWinner();
+    }
+   
+    restart();
 }
 
 const JaqueMateConfirm = () => {
+    let AllFull;
+
     let threeTop1 = allBlocks[0].innerText + allBlocks[1].innerText + allBlocks[2].innerText;
     let threeMiddle2 = allBlocks[3].innerText + allBlocks[4].innerText + allBlocks[5].innerText;
     let threeBottom3 = allBlocks[6].innerText + allBlocks[7].innerText + allBlocks[8].innerText;
@@ -68,42 +84,62 @@ const JaqueMateConfirm = () => {
     let Vertical5 = allBlocks[1].innerText + allBlocks[4].innerText + allBlocks[7].innerText;
     let Vertical6 = allBlocks[2].innerText + allBlocks[5].innerText + allBlocks[8].innerText;
 
-    let Diagonal7 = allBlocks[0].innerText + allBlocks[4].innerText + allBlocks[8].innerText
-    let Diagonal8 = allBlocks[2].innerText + allBlocks[4].innerText + allBlocks[6].innerText
+    let Diagonal7 = allBlocks[0].innerText + allBlocks[4].innerText + allBlocks[8].innerText;
+    let Diagonal8 = allBlocks[2].innerText + allBlocks[4].innerText + allBlocks[6].innerText;
 
     if (threeTop1 == "XXX" || threeTop1 == "OOO") {
-        EndGame(1);
+        EndGame();
     }
 
     else if (threeMiddle2 == "XXX" || threeMiddle2 == "OOO") {
-        EndGame(2);
+        EndGame();
     }
 
     else if (threeBottom3 == "XXX" || threeBottom3 == "OOO") {
-        EndGame(3);
+        EndGame();
     }
 
     else if (Vertical4 == "XXX" || Vertical4 == "OOO") {
-        EndGame(4);
+        EndGame();
     }
 
     else if (Vertical5 == "XXX" || Vertical5 == "OOO") {
-        EndGame(5);
+        EndGame();
     }
 
     else if (Vertical6 == "XXX" || Vertical6 == "OOO") {
-        EndGame(6);
+        EndGame();
     }
 
     else if (Diagonal7 === "XXX" || Diagonal7 == "OOO") {
-        EndGame(7);
+        EndGame();
     }
 
     else if (Diagonal8 === "XXX" || Diagonal8 == "OOO") {
-        EndGame(8);
+        EndGame();
     }
 
+    else {
+        for (let i = 0; i < 9; i++) {
+            if (allBlocks[i].innerText.length == 0) {
+                AllFull = false;
+                {break;}
+            }
+    
+            else {
+                AllFull = true;
+            }
+        }
+    
+        if (AllFull == true) {
+            EndGame(9);
+        }
+    }
 }
+
+const DrawConfirm = () => {
+
+}   
 
 function putSimbolOnTurn (block) {
     const turnContainerP = document.getElementById("turnContainer-p2");
@@ -119,6 +155,7 @@ function putSimbolOnTurn (block) {
         if (turnContainerP) turnContainerP.innerHTML = "X";
     }
     JaqueMateConfirm();
+    
     
 }
 
