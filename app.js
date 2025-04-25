@@ -137,10 +137,6 @@ const JaqueMateConfirm = () => {
     }
 }
 
-const DrawConfirm = () => {
-
-}   
-
 function putSimbolOnTurn (block) {
     const turnContainerP = document.getElementById("turnContainer-p2");
 
